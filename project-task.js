@@ -1,7 +1,6 @@
-/*
-===========================================
-📂 File Processing Simulation with Exceptions
-===========================================
+/*//===========================================
+//📂 File Processing Simulation with Exceptions
+//===========================================
 
 🎯 Objective:
 This activity will help students:
@@ -11,7 +10,7 @@ This activity will help students:
 
 ---
 📘 Scenario:
-You’ve been hired to create a system that simulates file processing for a virtual library.
+You've been hired to create a system that simulates file processing for a virtual library.
 
 The system must:
 - Validate user input (file names and data)
@@ -45,18 +44,28 @@ Step 4: Test Your Solution
 function processFile(fileName, fileData) {
   try {
     // TODO: Add input validation here
-    
+    if(!fileName) {
+      throw new Error("Missing filename.");
+    }
+    if (typeof fileData !== "string") {
+      throw new Error("File data is not a string.");
+    }
+    if (!fileData) {
+      throw new Error("File data is empty.");
+    }
     // TODO: Implement simulated file processing here
     console.log(`Processing file: ${fileName}`);
     console.log(`File content: ${fileData}`);
-    
+  
     // TODO: Add simulated file operations (reading/writing)
     
   } catch (err) {
     // TODO: Implement error handling
-    console.error(err);
+    console.error(err.message);
+  } finally {
+    // TODO: Implement a finally block to close resources
+    console.log("Closing resources.");
   }
-  // TODO: Implement a finally block to close resources
 }
 
 // ============================================
@@ -67,3 +76,6 @@ processFile(); // ❌ ReferenceError: File name is missing
 processFile("myFile.txt", 42); // ❌ TypeError: File data must be a string
 processFile("myFile.txt", ""); // ❌ Error: File data cannot be empty
 processFile("myFile.txt", "Hello, world!"); // ✅ Should process successfully
+
+
+
